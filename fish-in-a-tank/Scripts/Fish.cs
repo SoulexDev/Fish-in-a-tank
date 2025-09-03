@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public partial class Fish : AnimatedSprite2D
+public partial class Fish : CharacterBody2D
 {
-    public enum FishState { Idle, Talking, Eating, Dead }
+    public enum FishState { Idle, Talking, Eating, Dead, Denying }
     private FishState _m_currentState = FishState.Idle;
     private FishState m_currentState
     {
@@ -22,11 +22,16 @@ public partial class Fish : AnimatedSprite2D
                     case FishState.Idle:
                         break;
                     case FishState.Talking:
-                        happyPlayer.Play();
+                        if (m_happiness > 66)
+                            happyPlayer.Play();
+                        else if (m_happiness > 33)
+                            neutralPlayer.Play();
+                        else
+                            depressedPlayer.Play();
                         break;
                     case FishState.Eating:
                         m_foodEaten = 0;
-                        m_foods = FoodManager.Instance.GetNearbyFoods(Position);
+                        m_foods = InteractionManager.Instance.GetNearbyFoods(Position);
                         vacuumPlayer.Play();
                         vacuumParticles.Emitting = true;
                         break;
@@ -35,10 +40,13 @@ public partial class Fish : AnimatedSprite2D
                         happyPlayer.Stop();
                         neutralPlayer.Stop();
                         depressedPlayer.Stop();
-                        //nopePlayer.Stop();
+                        nopePlayer.Stop();
                         vacuumPlayer.Stop();
                         vacuumParticles.Restart();
                         vacuumParticles.Emitting = false;
+                        break;
+                    case FishState.Denying:
+                        nopePlayer.Play();
                         break;
                     default:
                         break;
@@ -51,18 +59,46 @@ public partial class Fish : AnimatedSprite2D
     private float m_speakingInterval;
     private Random m_rand;
 
+    [Export] public AnimatedSprite2D fishSprite;
+    [Export] public CollisionObject2D collider;
+
     [Export] public AudioStreamPlayer happyPlayer;
     [Export] public AudioStreamPlayer neutralPlayer;
     [Export] public AudioStreamPlayer depressedPlayer;
-
     [Export] public AudioStreamPlayer nopePlayer;
 
     [Export] public AudioStreamPlayer vacuumPlayer;
 
     [Export] public GpuParticles2D vacuumParticles;
 
+    [Export] public ProgressBar happinessBar;
+
     private int m_foodEaten;
-    private float m_happiness;
+
+    private float _m_happiness;
+    private float m_happiness
+    {
+        get { return _m_happiness; }
+        set
+        {
+            _m_happiness = Mathf.Clamp(value, 0, 100);
+            happinessBar.Value = m_happiness;
+        }
+    }
+    private float m_age;
+    private string m_ageTag
+    {
+        get
+        {
+            if (m_age > 66)
+                return "OLD";
+            else if (m_age > 33)
+                return "MA";
+            else
+                return "";
+        }
+    }
+
     private Vector2 m_target;
 
     private List<RigidBody2D> m_foods;
@@ -72,7 +108,7 @@ public partial class Fish : AnimatedSprite2D
     {
         base._Ready();
 
-        m_happiness = 1;
+        m_happiness = 100;
         m_rand = new Random();
         m_speakingWatch = new Stopwatch();
 
@@ -83,6 +119,23 @@ public partial class Fish : AnimatedSprite2D
         neutralPlayer.Finished += OnPlayerFinished;
         depressedPlayer.Finished += OnPlayerFinished;
         vacuumPlayer.Finished += OnPlayerFinished;
+        nopePlayer.Finished += OnPlayerFinished;
+
+        collider.InputEvent += Collider_InputEvent;
+
+        m_age = 66;
+    }
+
+    private void Collider_InputEvent(Node viewport, InputEvent @event, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseBtn)
+        {
+            if (mouseBtn.Pressed && mouseBtn.ButtonIndex == MouseButton.Left && 
+                InteractionManager.Instance.selectedItem == InteractionManager.Item.Clicker)
+            {
+                m_currentState = FishState.Denying;
+            }
+        }
     }
     public override void _Process(double delta)
     {
@@ -101,32 +154,38 @@ public partial class Fish : AnimatedSprite2D
             case FishState.Dead:
                 DoDead(delta);
                 break;
+            case FishState.Denying:
+                DoTalking(delta);
+                break;
+            default:
+                break;
         }
+
+        m_happiness -= (float)delta * 0.5f;
+        m_age += (float)delta * 0.1f;
     }
     private void OnPlayerFinished()
     {
         if (m_currentState == FishState.Dead)
-        {
-            GD.Print("RETURNED as FUCK");
             return;
+        if (m_currentState != FishState.Talking || m_currentState != FishState.Denying)
+        {
+            m_speakingWatch.Restart();
+            m_speakingInterval = m_rand.Next(10, 40);
         }
 
         m_currentState = FishState.Idle;
-
-        m_speakingWatch.Restart();
-        m_speakingInterval = m_rand.Next(10, 40);
-
         vacuumParticles.Emitting = false;
     }
     public void DoIdle(double delta)
     {
-        Play("Idle");
+        fishSprite.Play("Idle" + m_ageTag);
         if (Position.DistanceTo(m_target) > 1)
         {
             Position = Position.MoveToward(m_target, (float)delta * 100f);
 
             Vector2 direction = (m_target - Position).Normalized();
-            FlipH = direction.X < 0;
+            fishSprite.FlipH = direction.X < 0;
         }
         else
             m_target = new Vector2((GD.Randf() - 0.5f) * 2 * 700, (GD.Randf() - 0.5f) * 2 * 350);
@@ -135,18 +194,18 @@ public partial class Fish : AnimatedSprite2D
         {
             m_currentState = FishState.Talking;
         }
-        if (FoodManager.Instance.IsNearFood(Position))
+        if (InteractionManager.Instance.IsNearFood(Position))
         {
             m_currentState = FishState.Eating;
         }
     }
     public void DoTalking(double delta)
     {
-        Play("Talking");
+        fishSprite.Play("Talking" + m_ageTag);
     }
     public void DoEating(double delta)
     {
-        Play("Eating");
+        fishSprite.Play("Eating" + m_ageTag);
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -161,9 +220,11 @@ public partial class Fish : AnimatedSprite2D
                 if (f.Position.DistanceTo(Position) <= 65)
                 {
                     m_foods.Remove(f);
-                    FoodManager.Instance.RemoveFood(f);
+                    InteractionManager.Instance.RemoveFood(f);
 
                     m_foodEaten++;
+
+                    m_happiness += 5;
                 }
             }
             if (m_foodEaten > 6)
@@ -172,8 +233,8 @@ public partial class Fish : AnimatedSprite2D
     }
     public void DoDead(double delta)
     {
-        Play("Dead");
-        FlipV = true;
+        fishSprite.Play("Dead" + m_ageTag);
+        fishSprite.FlipV = true;
         Position += Vector2.Up * (float)delta * 20f;
     }
 }
