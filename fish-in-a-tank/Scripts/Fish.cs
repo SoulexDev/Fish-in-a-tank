@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 public partial class Fish : AnimatedSprite2D
@@ -14,6 +15,8 @@ public partial class Fish : AnimatedSprite2D
             if(value != _m_currentState)
             {
                 _m_currentState = value;
+                GD.Print(value);
+                GD.Print(_m_currentState);
                 switch (_m_currentState)
                 {
                     case FishState.Idle:
@@ -22,8 +25,20 @@ public partial class Fish : AnimatedSprite2D
                         happyPlayer.Play();
                         break;
                     case FishState.Eating:
+                        m_foodEaten = 0;
+                        m_foods = FoodManager.Instance.GetNearbyFoods(Position);
+                        vacuumPlayer.Play();
+                        vacuumParticles.Emitting = true;
                         break;
                     case FishState.Dead:
+                        GD.Print("dead as FUCK");
+                        happyPlayer.Stop();
+                        neutralPlayer.Stop();
+                        depressedPlayer.Stop();
+                        //nopePlayer.Stop();
+                        vacuumPlayer.Stop();
+                        vacuumParticles.Restart();
+                        vacuumParticles.Emitting = false;
                         break;
                     default:
                         break;
@@ -40,8 +55,18 @@ public partial class Fish : AnimatedSprite2D
     [Export] public AudioStreamPlayer neutralPlayer;
     [Export] public AudioStreamPlayer depressedPlayer;
 
+    [Export] public AudioStreamPlayer nopePlayer;
+
+    [Export] public AudioStreamPlayer vacuumPlayer;
+
+    [Export] public GpuParticles2D vacuumParticles;
+
+    private int m_foodEaten;
     private float m_happiness;
     private Vector2 m_target;
+
+    private List<RigidBody2D> m_foods;
+    List<RigidBody2D> foodsToDelete = new List<RigidBody2D>();
 
     public override void _Ready()
     {
@@ -52,11 +77,12 @@ public partial class Fish : AnimatedSprite2D
         m_speakingWatch = new Stopwatch();
 
         m_speakingWatch.Start();
-        m_speakingInterval = m_rand.Next(25, 80);
+        m_speakingInterval = m_rand.Next(10, 40);
 
         happyPlayer.Finished += OnPlayerFinished;
         neutralPlayer.Finished += OnPlayerFinished;
         depressedPlayer.Finished += OnPlayerFinished;
+        vacuumPlayer.Finished += OnPlayerFinished;
     }
     public override void _Process(double delta)
     {
@@ -79,10 +105,18 @@ public partial class Fish : AnimatedSprite2D
     }
     private void OnPlayerFinished()
     {
+        if (m_currentState == FishState.Dead)
+        {
+            GD.Print("RETURNED as FUCK");
+            return;
+        }
+
         m_currentState = FishState.Idle;
 
         m_speakingWatch.Restart();
-        m_speakingInterval = m_rand.Next(25, 80);
+        m_speakingInterval = m_rand.Next(10, 40);
+
+        vacuumParticles.Emitting = false;
     }
     public void DoIdle(double delta)
     {
@@ -101,6 +135,10 @@ public partial class Fish : AnimatedSprite2D
         {
             m_currentState = FishState.Talking;
         }
+        if (FoodManager.Instance.IsNearFood(Position))
+        {
+            m_currentState = FishState.Eating;
+        }
     }
     public void DoTalking(double delta)
     {
@@ -109,6 +147,28 @@ public partial class Fish : AnimatedSprite2D
     public void DoEating(double delta)
     {
         Play("Eating");
+    }
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta); 
+        if (m_currentState == FishState.Eating)
+        {
+            for (int i = m_foods.Count - 1; i > 0 ; i--)
+            {
+                RigidBody2D f = m_foods[i];
+                f.LinearVelocity = (Position - f.Position).Normalized() * 100;
+
+                if (f.Position.DistanceTo(Position) <= 65)
+                {
+                    m_foods.Remove(f);
+                    FoodManager.Instance.RemoveFood(f);
+
+                    m_foodEaten++;
+                }
+            }
+            if (m_foodEaten > 6)
+                m_currentState = FishState.Dead;
+        }
     }
     public void DoDead(double delta)
     {

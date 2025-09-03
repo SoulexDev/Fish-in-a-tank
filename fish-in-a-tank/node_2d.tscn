@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bervvtcu4faek"]
+[gd_scene load_steps=35 format=3 uid="uid://bervvtcu4faek"]
 
 [ext_resource type="Texture2D" uid="uid://cfgsuefuloxm8" path="res://Sprites/BG1.png" id="1_rj586"]
 [ext_resource type="Texture2D" uid="uid://bm1o1h5xrtfmh" path="res://Sprites/fishTank.png" id="1_wtcfe"]
@@ -15,10 +15,20 @@
 [ext_resource type="AudioStream" uid="uid://dpy7m6yq722s5" path="res://Audio/im happy.ogg" id="12_rjqkl"]
 [ext_resource type="AudioStream" uid="uid://cbf5h8mmltp1q" path="res://Audio/mermaids.ogg" id="13_fs4d3"]
 [ext_resource type="AudioStream" uid="uid://xkvv8lwc5flx" path="res://Audio/fish school.ogg" id="14_7vxoj"]
+[ext_resource type="AudioStream" uid="uid://cxbsi7iyocnj2" path="res://Audio/this fish bowl.ogg" id="15_7vxoj"]
 [ext_resource type="AudioStream" uid="uid://cjtjigxktg4h5" path="res://Audio/a rock would.ogg" id="15_ei405"]
 [ext_resource type="AudioStream" uid="uid://car3d70rgipav" path="res://Audio/reality is a lie.ogg" id="16_e8dv2"]
 [ext_resource type="AudioStream" uid="uid://ds34fedefm3hd" path="res://Audio/im depress.ogg" id="17_2nhjh"]
 [ext_resource type="AudioStream" uid="uid://b8nejdt2vkg6v" path="res://Audio/end me now.ogg" id="18_bjha6"]
+[ext_resource type="AudioStream" uid="uid://caobwa34lg84q" path="res://Audio/vegetable.ogg" id="18_ei405"]
+[ext_resource type="AudioStream" uid="uid://byxg40sxihfgl" path="res://Audio/Cool Vibes.mp3" id="20_fs4d3"]
+[ext_resource type="AudioStream" uid="uid://cn0qjwcx7gcxe" path="res://Audio/vacuum.ogg" id="21_2nhjh"]
+[ext_resource type="Script" uid="uid://0elyoma4hyp2" path="res://Scripts/FoodManager.cs" id="22_e8dv2"]
+
+[sub_resource type="Environment" id="Environment_7vxoj"]
+tonemap_mode = 3
+glow_enabled = true
+adjustment_enabled = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqns4"]
 animations = [{
@@ -65,7 +75,7 @@ animations = [{
 "texture": ExtResource("3_q6r6c")
 }],
 "loop": false,
-"name": &"Eat",
+"name": &"Eating",
 "speed": 5.0
 }, {
 "frames": [{
@@ -89,29 +99,57 @@ animations = [{
 }]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gt76g"]
-streams_count = 3
+streams_count = 4
 stream_0/stream = ExtResource("12_rjqkl")
 stream_1/stream = ExtResource("13_fs4d3")
 stream_2/stream = ExtResource("14_7vxoj")
+stream_3/stream = ExtResource("15_7vxoj")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1fr6y"]
-streams_count = 3
+streams_count = 4
 stream_0/stream = ExtResource("13_fs4d3")
 stream_1/stream = ExtResource("15_ei405")
 stream_2/stream = ExtResource("16_e8dv2")
+stream_3/stream = ExtResource("18_ei405")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2hxjc"]
-streams_count = 4
+streams_count = 5
 stream_0/stream = ExtResource("17_2nhjh")
 stream_1/stream = ExtResource("18_bjha6")
 stream_2/stream = ExtResource("16_e8dv2")
 stream_3/stream = ExtResource("15_ei405")
+stream_4/stream = ExtResource("18_ei405")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fs4d3"]
+font_size = 32
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2nhjh"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 1
+emission_sphere_radius = 100.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -150.0
+radial_velocity_max = -100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+scale_min = 0.1
+scale_max = 0.15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
 size = Vector2(1528, 89)
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-717.0]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7vxoj")
 
 [node name="WaterSand" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hqns4")
@@ -126,15 +164,16 @@ amount = 20
 texture = ExtResource("2_0hol4")
 process_material = SubResource("ParticleProcessMaterial_d21ai")
 
-[node name="Fish" type="AnimatedSprite2D" parent="Tank" node_paths=PackedStringArray("happyPlayer", "neutralPlayer", "depressedPlayer")]
+[node name="Fish" type="AnimatedSprite2D" parent="Tank" node_paths=PackedStringArray("happyPlayer", "neutralPlayer", "depressedPlayer", "vacuumPlayer", "vacuumParticles")]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_rj586")
-animation = &"Talking"
-frame_progress = 0.923663
+animation = &"Idle"
 script = ExtResource("5_q6r6c")
 happyPlayer = NodePath("HappyPlayer")
 neutralPlayer = NodePath("NeutralPlayer")
 depressedPlayer = NodePath("DepressedPlayer")
+vacuumPlayer = NodePath("VacuumPlayer")
+vacuumParticles = NodePath("Vacuum")
 
 [node name="HappyPlayer" type="AudioStreamPlayer" parent="Tank/Fish"]
 stream = SubResource("AudioStreamRandomizer_gt76g")
@@ -145,6 +184,34 @@ stream = SubResource("AudioStreamRandomizer_1fr6y")
 [node name="DepressedPlayer" type="AudioStreamPlayer" parent="Tank/Fish"]
 stream = SubResource("AudioStreamRandomizer_2hxjc")
 
+[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Tank/Fish"]
+stream = ExtResource("21_2nhjh")
+
+[node name="Label" type="Label" parent="Tank/Fish"]
+offset_left = -96.0
+offset_top = -304.0
+offset_right = 96.0
+offset_bottom = -257.0
+text = "Happiness"
+label_settings = SubResource("LabelSettings_fs4d3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Tank/Fish"]
+offset_left = -192.0
+offset_top = -248.0
+offset_right = 196.0
+offset_bottom = -208.0
+value = 100.0
+show_percentage = false
+
+[node name="Vacuum" type="GPUParticles2D" parent="Tank/Fish"]
+position = Vector2(102.065, -44.325)
+emitting = false
+amount = 20
+texture = ExtResource("2_0hol4")
+process_material = SubResource("ParticleProcessMaterial_2nhjh")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Tank"]
 position = Vector2(0, 288)
 
@@ -152,7 +219,20 @@ position = Vector2(0, 288)
 position = Vector2(-1, 34.5)
 shape = SubResource("RectangleShape2D_rj586")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.72, 0.72)
+[node name="StaticBody2D2" type="StaticBody2D" parent="Tank"]
+position = Vector2(0, -408)
 
-[node name="Food" parent="." instance=ExtResource("10_hqns4")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank/StaticBody2D2"]
+position = Vector2(-1, 34.5)
+shape = SubResource("RectangleShape2D_rj586")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.23, 1.23)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_fs4d3")
+autoplay = true
+
+[node name="FoodManager" type="Node2D" parent="."]
+script = ExtResource("22_e8dv2")
+food = ExtResource("10_hqns4")
