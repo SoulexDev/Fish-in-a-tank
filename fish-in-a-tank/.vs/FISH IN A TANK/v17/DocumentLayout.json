@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\foodmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\foodmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\colorrandomizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\colorrandomizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ColorRandomizer.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\ColorRandomizer.cs",
+              "RelativeDocumentMoniker": "Scripts\\ColorRandomizer.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\ColorRandomizer.cs",
+              "RelativeToolTip": "Scripts\\ColorRandomizer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T00:21:12.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FoodManager.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\FoodManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\FoodManager.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\FoodManager.cs",
+              "RelativeToolTip": "Scripts\\FoodManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T00:10:12.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Fish.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Fish.cs",
+              "RelativeDocumentMoniker": "Scripts\\Fish.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Fish.cs",
+              "RelativeToolTip": "Scripts\\Fish.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwFQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T23:51:57.702Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 167,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

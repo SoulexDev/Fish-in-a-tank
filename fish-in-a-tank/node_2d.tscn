@@ -1,3 +1,158 @@
-[gd_scene format=3 uid="uid://bervvtcu4faek"]
+[gd_scene load_steps=27 format=3 uid="uid://bervvtcu4faek"]
+
+[ext_resource type="Texture2D" uid="uid://cfgsuefuloxm8" path="res://Sprites/BG1.png" id="1_rj586"]
+[ext_resource type="Texture2D" uid="uid://bm1o1h5xrtfmh" path="res://Sprites/fishTank.png" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://dsynw5q25vxn4" path="res://Sprites/bunble.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://llrkqhcgnos0" path="res://Sprites/BG2.png" id="2_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://dniq7dlvt52ec" path="res://Sprites/BG3.png" id="3_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://cskf1stucemd1" path="res://Sprites/finsh2.png" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://55fbit4j1sdx" path="res://Sprites/finsh.png" id="4_kdubu"]
+[ext_resource type="Script" uid="uid://d3vcs3atn8mae" path="res://Scripts/Fish.cs" id="5_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://cak6uwqqnnpds" path="res://Sprites/deadFinsh.png" id="6_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://cu0q0rp41qcw2" path="res://Sprites/fishTalk1.png" id="9_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://bwan5em45wv6i" path="res://Sprites/fishTalk2.png" id="10_0h7mo"]
+[ext_resource type="PackedScene" uid="uid://b5yxhi3lugc0e" path="res://Prefabs/food.tscn" id="10_hqns4"]
+[ext_resource type="AudioStream" uid="uid://dpy7m6yq722s5" path="res://Audio/im happy.ogg" id="12_rjqkl"]
+[ext_resource type="AudioStream" uid="uid://cbf5h8mmltp1q" path="res://Audio/mermaids.ogg" id="13_fs4d3"]
+[ext_resource type="AudioStream" uid="uid://xkvv8lwc5flx" path="res://Audio/fish school.ogg" id="14_7vxoj"]
+[ext_resource type="AudioStream" uid="uid://cjtjigxktg4h5" path="res://Audio/a rock would.ogg" id="15_ei405"]
+[ext_resource type="AudioStream" uid="uid://car3d70rgipav" path="res://Audio/reality is a lie.ogg" id="16_e8dv2"]
+[ext_resource type="AudioStream" uid="uid://ds34fedefm3hd" path="res://Audio/im depress.ogg" id="17_2nhjh"]
+[ext_resource type="AudioStream" uid="uid://b8nejdt2vkg6v" path="res://Audio/end me now.ogg" id="18_bjha6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqns4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rj586")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4d7sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ir8iy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d21ai"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(500, 250, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rj586"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ir8iy")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q6r6c")
+}],
+"loop": false,
+"name": &"Eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kdubu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_x0ka3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0h7mo")
+}],
+"loop": true,
+"name": &"Talking",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gt76g"]
+streams_count = 3
+stream_0/stream = ExtResource("12_rjqkl")
+stream_1/stream = ExtResource("13_fs4d3")
+stream_2/stream = ExtResource("14_7vxoj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1fr6y"]
+streams_count = 3
+stream_0/stream = ExtResource("13_fs4d3")
+stream_1/stream = ExtResource("15_ei405")
+stream_2/stream = ExtResource("16_e8dv2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2hxjc"]
+streams_count = 4
+stream_0/stream = ExtResource("17_2nhjh")
+stream_1/stream = ExtResource("18_bjha6")
+stream_2/stream = ExtResource("16_e8dv2")
+stream_3/stream = ExtResource("15_ei405")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
+size = Vector2(1528, 89)
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-717.0]
+
+[node name="WaterSand" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hqns4")
+autoplay = "default"
+frame_progress = 0.663633
+
+[node name="Tank" type="Sprite2D" parent="."]
+texture = ExtResource("1_wtcfe")
+
+[node name="Bubbles" type="GPUParticles2D" parent="Tank"]
+amount = 20
+texture = ExtResource("2_0hol4")
+process_material = SubResource("ParticleProcessMaterial_d21ai")
+
+[node name="Fish" type="AnimatedSprite2D" parent="Tank" node_paths=PackedStringArray("happyPlayer", "neutralPlayer", "depressedPlayer")]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_rj586")
+animation = &"Talking"
+frame_progress = 0.923663
+script = ExtResource("5_q6r6c")
+happyPlayer = NodePath("HappyPlayer")
+neutralPlayer = NodePath("NeutralPlayer")
+depressedPlayer = NodePath("DepressedPlayer")
+
+[node name="HappyPlayer" type="AudioStreamPlayer" parent="Tank/Fish"]
+stream = SubResource("AudioStreamRandomizer_gt76g")
+
+[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Tank/Fish"]
+stream = SubResource("AudioStreamRandomizer_1fr6y")
+
+[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Tank/Fish"]
+stream = SubResource("AudioStreamRandomizer_2hxjc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tank"]
+position = Vector2(0, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank/StaticBody2D"]
+position = Vector2(-1, 34.5)
+shape = SubResource("RectangleShape2D_rj586")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.72, 0.72)
+
+[node name="Food" parent="." instance=ExtResource("10_hqns4")]
