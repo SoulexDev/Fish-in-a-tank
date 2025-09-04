@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://xkvv8lwc5flx"
+path="res://.godot/imported/fish school.ogg-ab135372b7502da2e9d3501607cdb2f2.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SoulexFish/fish school.ogg"
+dest_files=["res://.godot/imported/fish school.ogg-ab135372b7502da2e9d3501607cdb2f2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

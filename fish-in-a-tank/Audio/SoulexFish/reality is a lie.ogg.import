@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://car3d70rgipav"
+path="res://.godot/imported/reality is a lie.ogg-0dd0372a530328eaf1ebf254c108676d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SoulexFish/reality is a lie.ogg"
+dest_files=["res://.godot/imported/reality is a lie.ogg-0dd0372a530328eaf1ebf254c108676d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

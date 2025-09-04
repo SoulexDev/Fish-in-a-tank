@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://jgfc88irkl8r"
+path="res://.godot/imported/no 2.ogg-08ddc38da98d1bd1052a141c359995fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SoulexFish/no 2.ogg"
+dest_files=["res://.godot/imported/no 2.ogg-08ddc38da98d1bd1052a141c359995fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

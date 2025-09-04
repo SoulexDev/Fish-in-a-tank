@@ -73,6 +73,10 @@ public partial class Fish : CharacterBody2D
 
     [Export] public ProgressBar happinessBar;
 
+    [Export] public PackedScene blood;
+
+    [Export] public bool otherFish;
+
     private int m_foodEaten;
 
     private float _m_happiness;
@@ -90,6 +94,8 @@ public partial class Fish : CharacterBody2D
     {
         get
         {
+            if (otherFish)
+                return "";
             if (m_age > 66)
                 return "OLD";
             else if (m_age > 33)
@@ -122,18 +128,18 @@ public partial class Fish : CharacterBody2D
         nopePlayer.Finished += OnPlayerFinished;
 
         collider.InputEvent += Collider_InputEvent;
-
-        m_age = 66;
     }
 
     private void Collider_InputEvent(Node viewport, InputEvent @event, long shapeIdx)
     {
         if (@event is InputEventMouseButton mouseBtn)
         {
-            if (mouseBtn.Pressed && mouseBtn.ButtonIndex == MouseButton.Left && 
-                InteractionManager.Instance.selectedItem == InteractionManager.Item.Clicker)
+            if (mouseBtn.Pressed && mouseBtn.ButtonIndex == MouseButton.Left)
             {
-                m_currentState = FishState.Denying;
+                if (InteractionManager.Instance.selectedItem == InteractionManager.Item.Clicker)
+                    m_currentState = FishState.Denying;
+                else if (InteractionManager.Instance.selectedItem == InteractionManager.Item.Glock)
+                    ExplodeFish();
             }
         }
     }
@@ -177,6 +183,16 @@ public partial class Fish : CharacterBody2D
         m_currentState = FishState.Idle;
         vacuumParticles.Emitting = false;
     }
+    public void ExplodeFish()
+    {
+        GpuParticles2D newBlood = (GpuParticles2D)GD.Load<PackedScene>(blood.ResourcePath).Instantiate();
+        GetParent().AddChild(newBlood);
+        newBlood.Position = GetGlobalMousePosition();
+        newBlood.Emitting = true;
+
+        m_currentState = FishState.Dead;
+        //QueueFree();
+    }
     public void DoIdle(double delta)
     {
         fishSprite.Play("Idle" + m_ageTag);
@@ -215,6 +231,9 @@ public partial class Fish : CharacterBody2D
             for (int i = m_foods.Count - 1; i > 0 ; i--)
             {
                 RigidBody2D f = m_foods[i];
+
+                if (f == null)
+                    continue;
                 f.LinearVelocity = (Position - f.Position).Normalized() * 100;
 
                 if (f.Position.DistanceTo(Position) <= 65)

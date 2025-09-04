@@ -1,0 +1,197 @@
+[gd_scene load_steps=36 format=3 uid="uid://cegbcand7wgqk"]
+
+[ext_resource type="Script" uid="uid://d3vcs3atn8mae" path="res://Scripts/Fish.cs" id="1_h5kbt"]
+[ext_resource type="Texture2D" uid="uid://btyba4p5q2k17" path="res://Sprites/otherfish/death.png" id="2_6x4br"]
+[ext_resource type="PackedScene" uid="uid://fce815u55y1x" path="res://Prefabs/blood.tscn" id="2_vivak"]
+[ext_resource type="Texture2D" uid="uid://c1anamrgvfmrb" path="res://Sprites/otherfish/eat.png" id="3_vivak"]
+[ext_resource type="Texture2D" uid="uid://qadwr8ay4xjc" path="res://Sprites/otherfish/idle.png" id="4_0ltw5"]
+[ext_resource type="Texture2D" uid="uid://sfdbhohakdio" path="res://Sprites/otherfish/talk1.png" id="5_o3vfw"]
+[ext_resource type="Texture2D" uid="uid://dp47yk4f667sy" path="res://Sprites/otherfish/talk2.png" id="6_ax4lm"]
+[ext_resource type="AudioStream" uid="uid://dpy7m6yq722s5" path="res://Audio/SoulexFish/im happy.ogg" id="7_ph8hb"]
+[ext_resource type="AudioStream" uid="uid://cbf5h8mmltp1q" path="res://Audio/SoulexFish/mermaids.ogg" id="8_u36gj"]
+[ext_resource type="AudioStream" uid="uid://xkvv8lwc5flx" path="res://Audio/SoulexFish/fish school.ogg" id="9_6wo8r"]
+[ext_resource type="AudioStream" uid="uid://cxbsi7iyocnj2" path="res://Audio/SoulexFish/this fish bowl.ogg" id="10_7l77i"]
+[ext_resource type="AudioStream" uid="uid://cjtjigxktg4h5" path="res://Audio/SoulexFish/a rock would.ogg" id="11_gcblx"]
+[ext_resource type="AudioStream" uid="uid://car3d70rgipav" path="res://Audio/SoulexFish/reality is a lie.ogg" id="12_16wrk"]
+[ext_resource type="AudioStream" uid="uid://caobwa34lg84q" path="res://Audio/SoulexFish/vegetable.ogg" id="13_28nct"]
+[ext_resource type="AudioStream" uid="uid://ds34fedefm3hd" path="res://Audio/SoulexFish/im depress.ogg" id="14_ay0cn"]
+[ext_resource type="AudioStream" uid="uid://b8nejdt2vkg6v" path="res://Audio/SoulexFish/end me now.ogg" id="15_x0f0n"]
+[ext_resource type="AudioStream" uid="uid://dh52grpsw3vq2" path="res://Audio/SoulexFish/no 1.ogg" id="16_6g1uh"]
+[ext_resource type="AudioStream" uid="uid://jgfc88irkl8r" path="res://Audio/SoulexFish/no 2.ogg" id="17_v6ixi"]
+[ext_resource type="AudioStream" uid="uid://cm0ag4xs85usr" path="res://Audio/SoulexFish/no 3.ogg" id="18_o8n8a"]
+[ext_resource type="AudioStream" uid="uid://b0s5uopf4ooug" path="res://Audio/SoulexFish/no 4.ogg" id="19_fb7ty"]
+[ext_resource type="AudioStream" uid="uid://cf41kos4slyh2" path="res://Audio/SoulexFish/no 5.ogg" id="20_ryld7"]
+[ext_resource type="AudioStream" uid="uid://cm4k7jutsx01h" path="res://Audio/SoulexFish/no 6.ogg" id="21_lg8dr"]
+[ext_resource type="AudioStream" uid="uid://cn0qjwcx7gcxe" path="res://Audio/vacuum.ogg" id="22_fksqk"]
+[ext_resource type="Texture2D" uid="uid://dsynw5q25vxn4" path="res://Sprites/bunble.png" id="23_k7k6y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22e24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6x4br")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vivak")
+}],
+"loop": true,
+"name": &"Eating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0ltw5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o3vfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ax4lm")
+}],
+"loop": true,
+"name": &"Talking",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gt76g"]
+streams_count = 4
+stream_0/stream = ExtResource("7_ph8hb")
+stream_1/stream = ExtResource("8_u36gj")
+stream_2/stream = ExtResource("9_6wo8r")
+stream_3/stream = ExtResource("10_7l77i")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1fr6y"]
+streams_count = 4
+stream_0/stream = ExtResource("8_u36gj")
+stream_1/stream = ExtResource("11_gcblx")
+stream_2/stream = ExtResource("12_16wrk")
+stream_3/stream = ExtResource("13_28nct")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2hxjc"]
+streams_count = 5
+stream_0/stream = ExtResource("14_ay0cn")
+stream_1/stream = ExtResource("15_x0f0n")
+stream_2/stream = ExtResource("12_16wrk")
+stream_3/stream = ExtResource("11_gcblx")
+stream_4/stream = ExtResource("13_28nct")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ip5v"]
+streams_count = 6
+stream_0/stream = ExtResource("16_6g1uh")
+stream_1/stream = ExtResource("17_v6ixi")
+stream_2/stream = ExtResource("18_o8n8a")
+stream_3/stream = ExtResource("19_fb7ty")
+stream_4/stream = ExtResource("20_ryld7")
+stream_5/stream = ExtResource("21_lg8dr")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fs4d3"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjha6"]
+border_color = Color(0.683077, 0.683077, 0.683077, 1)
+
+[sub_resource type="Theme" id="Theme_gt76g"]
+/styles/HappinessColor = SubResource("StyleBoxFlat_bjha6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gt76g"]
+bg_color = Color(1, 0.348629, 0.357132, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2nhjh"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 1
+emission_sphere_radius = 100.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -150.0
+radial_velocity_max = -100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+scale_min = 0.1
+scale_max = 0.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjha6"]
+size = Vector2(400, 320)
+
+[node name="Fish2" type="CharacterBody2D" node_paths=PackedStringArray("fishSprite", "collider", "happyPlayer", "neutralPlayer", "depressedPlayer", "nopePlayer", "vacuumPlayer", "vacuumParticles", "happinessBar")]
+collision_layer = 2
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_h5kbt")
+fishSprite = NodePath("Fish")
+collider = NodePath(".")
+happyPlayer = NodePath("Fish/HappyPlayer")
+neutralPlayer = NodePath("Fish/NeutralPlayer")
+depressedPlayer = NodePath("Fish/DepressedPlayer")
+nopePlayer = NodePath("Fish/NopePlayer")
+vacuumPlayer = NodePath("Fish/VacuumPlayer")
+vacuumParticles = NodePath("Fish/Vacuum")
+happinessBar = NodePath("Fish/ProgressBar")
+blood = ExtResource("2_vivak")
+otherFish = true
+
+[node name="Fish" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_22e24")
+animation = &"Idle"
+
+[node name="HappyPlayer" type="AudioStreamPlayer" parent="Fish"]
+stream = SubResource("AudioStreamRandomizer_gt76g")
+
+[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Fish"]
+stream = SubResource("AudioStreamRandomizer_1fr6y")
+
+[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Fish"]
+stream = SubResource("AudioStreamRandomizer_2hxjc")
+
+[node name="NopePlayer" type="AudioStreamPlayer" parent="Fish"]
+stream = SubResource("AudioStreamRandomizer_6ip5v")
+
+[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Fish"]
+stream = ExtResource("22_fksqk")
+
+[node name="Label" type="Label" parent="Fish"]
+offset_left = -96.0
+offset_top = -304.0
+offset_right = 96.0
+offset_bottom = -257.0
+text = "Happiness"
+label_settings = SubResource("LabelSettings_fs4d3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Fish"]
+offset_left = -192.0
+offset_top = -260.0
+offset_right = 196.0
+offset_bottom = -220.0
+theme = SubResource("Theme_gt76g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gt76g")
+value = 100.0
+show_percentage = false
+
+[node name="Vacuum" type="GPUParticles2D" parent="Fish"]
+position = Vector2(102.065, -44.325)
+emitting = false
+amount = 20
+texture = ExtResource("23_k7k6y")
+process_material = SubResource("ParticleProcessMaterial_2nhjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_bjha6")

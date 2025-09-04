@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjtjigxktg4h5"
+path="res://.godot/imported/a rock would.ogg-c5b11b03d2044e7648ea68391538a36c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SoulexFish/a rock would.ogg"
+dest_files=["res://.godot/imported/a rock would.ogg-c5b11b03d2044e7648ea68391538a36c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

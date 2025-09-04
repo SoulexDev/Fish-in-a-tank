@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://n82vfssiaa2d"
+path="res://.godot/imported/no 3_h.ogg-d739ff9f8ddb56fba927c58f051864ac.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/New folder/no 3_h.ogg"
+dest_files=["res://.godot/imported/no 3_h.ogg-d739ff9f8ddb56fba927c58f051864ac.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

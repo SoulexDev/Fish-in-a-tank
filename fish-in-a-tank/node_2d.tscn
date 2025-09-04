@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bervvtcu4faek"]
+[gd_scene load_steps=62 format=3 uid="uid://bervvtcu4faek"]
 
 [ext_resource type="Texture2D" uid="uid://cfgsuefuloxm8" path="res://Sprites/BG1.png" id="1_rj586"]
 [ext_resource type="Texture2D" uid="uid://bm1o1h5xrtfmh" path="res://Sprites/fishTank.png" id="1_wtcfe"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://55fbit4j1sdx" path="res://Sprites/finsh.png" id="4_kdubu"]
 [ext_resource type="Script" uid="uid://d3vcs3atn8mae" path="res://Scripts/Fish.cs" id="5_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://cak6uwqqnnpds" path="res://Sprites/deadFinsh.png" id="6_ir8iy"]
+[ext_resource type="PackedScene" uid="uid://fce815u55y1x" path="res://Prefabs/blood.tscn" id="7_lbrxf"]
 [ext_resource type="Texture2D" uid="uid://b3rx0hpcbqbbq" path="res://Sprites/ma/deadma.png" id="8_fbwgr"]
 [ext_resource type="Texture2D" uid="uid://tlnrfwo4xyub" path="res://Sprites/old/dead.png" id="9_7mj2a"]
 [ext_resource type="Texture2D" uid="uid://cu0q0rp41qcw2" path="res://Sprites/fishTalk1.png" id="9_x0ka3"]
@@ -16,31 +17,35 @@
 [ext_resource type="PackedScene" uid="uid://b5yxhi3lugc0e" path="res://Prefabs/food.tscn" id="10_hqns4"]
 [ext_resource type="Texture2D" uid="uid://dt7wcb4eo5iu0" path="res://Sprites/ma/ear.png" id="11_fshgd"]
 [ext_resource type="Texture2D" uid="uid://ddq3ixtrpmtuf" path="res://Sprites/old/earFood.png" id="12_lbrxf"]
-[ext_resource type="AudioStream" uid="uid://dpy7m6yq722s5" path="res://Audio/im happy.ogg" id="12_rjqkl"]
-[ext_resource type="AudioStream" uid="uid://cbf5h8mmltp1q" path="res://Audio/mermaids.ogg" id="13_fs4d3"]
-[ext_resource type="AudioStream" uid="uid://xkvv8lwc5flx" path="res://Audio/fish school.ogg" id="14_7vxoj"]
+[ext_resource type="AudioStream" uid="uid://dpy7m6yq722s5" path="res://Audio/SoulexFish/im happy.ogg" id="12_rjqkl"]
+[ext_resource type="AudioStream" uid="uid://cbf5h8mmltp1q" path="res://Audio/SoulexFish/mermaids.ogg" id="13_fs4d3"]
+[ext_resource type="AudioStream" uid="uid://xkvv8lwc5flx" path="res://Audio/SoulexFish/fish school.ogg" id="14_7vxoj"]
 [ext_resource type="Texture2D" uid="uid://buoapdlt27q1g" path="res://Sprites/ma/Fish1.png" id="14_xjt7e"]
 [ext_resource type="Texture2D" uid="uid://binl2vvfirhge" path="res://Sprites/old/idle.png" id="15_0xo8l"]
-[ext_resource type="AudioStream" uid="uid://cxbsi7iyocnj2" path="res://Audio/this fish bowl.ogg" id="15_7vxoj"]
-[ext_resource type="AudioStream" uid="uid://cjtjigxktg4h5" path="res://Audio/a rock would.ogg" id="15_ei405"]
-[ext_resource type="AudioStream" uid="uid://car3d70rgipav" path="res://Audio/reality is a lie.ogg" id="16_e8dv2"]
-[ext_resource type="AudioStream" uid="uid://ds34fedefm3hd" path="res://Audio/im depress.ogg" id="17_2nhjh"]
-[ext_resource type="AudioStream" uid="uid://b8nejdt2vkg6v" path="res://Audio/end me now.ogg" id="18_bjha6"]
-[ext_resource type="AudioStream" uid="uid://caobwa34lg84q" path="res://Audio/vegetable.ogg" id="18_ei405"]
+[ext_resource type="AudioStream" uid="uid://cxbsi7iyocnj2" path="res://Audio/SoulexFish/this fish bowl.ogg" id="15_7vxoj"]
+[ext_resource type="AudioStream" uid="uid://cjtjigxktg4h5" path="res://Audio/SoulexFish/a rock would.ogg" id="15_ei405"]
+[ext_resource type="AudioStream" uid="uid://car3d70rgipav" path="res://Audio/SoulexFish/reality is a lie.ogg" id="16_e8dv2"]
+[ext_resource type="AudioStream" uid="uid://ds34fedefm3hd" path="res://Audio/SoulexFish/im depress.ogg" id="17_2nhjh"]
+[ext_resource type="AudioStream" uid="uid://b8nejdt2vkg6v" path="res://Audio/SoulexFish/end me now.ogg" id="18_bjha6"]
+[ext_resource type="AudioStream" uid="uid://caobwa34lg84q" path="res://Audio/SoulexFish/vegetable.ogg" id="18_ei405"]
 [ext_resource type="Texture2D" uid="uid://x18iagu2nmyt" path="res://Sprites/ma/FishTslk1png.png" id="18_xfyss"]
 [ext_resource type="Texture2D" uid="uid://bnjml0ovy8u0i" path="res://Sprites/ma/FishTslk2png.png" id="19_3ngjr"]
 [ext_resource type="AudioStream" uid="uid://byxg40sxihfgl" path="res://Audio/Cool Vibes.mp3" id="20_fs4d3"]
 [ext_resource type="Texture2D" uid="uid://bqg3qj2pbruki" path="res://Sprites/old/talk1.png" id="20_qilgh"]
 [ext_resource type="AudioStream" uid="uid://cn0qjwcx7gcxe" path="res://Audio/vacuum.ogg" id="21_2nhjh"]
 [ext_resource type="Texture2D" uid="uid://dgrihpq3l7nb6" path="res://Sprites/old/talk2.png" id="21_4qosj"]
-[ext_resource type="AudioStream" uid="uid://dh52grpsw3vq2" path="res://Audio/no 1.ogg" id="21_24dk6"]
+[ext_resource type="AudioStream" uid="uid://dh52grpsw3vq2" path="res://Audio/SoulexFish/no 1.ogg" id="21_24dk6"]
 [ext_resource type="Script" uid="uid://0elyoma4hyp2" path="res://Scripts/InteractionManager.cs" id="22_e8dv2"]
-[ext_resource type="AudioStream" uid="uid://jgfc88irkl8r" path="res://Audio/no 2.ogg" id="22_mryly"]
-[ext_resource type="AudioStream" uid="uid://cm0ag4xs85usr" path="res://Audio/no 3.ogg" id="23_kq1c5"]
-[ext_resource type="AudioStream" uid="uid://b0s5uopf4ooug" path="res://Audio/no 4.ogg" id="24_ornx7"]
+[ext_resource type="AudioStream" uid="uid://jgfc88irkl8r" path="res://Audio/SoulexFish/no 2.ogg" id="22_mryly"]
+[ext_resource type="AudioStream" uid="uid://cm0ag4xs85usr" path="res://Audio/SoulexFish/no 3.ogg" id="23_kq1c5"]
+[ext_resource type="AudioStream" uid="uid://b0s5uopf4ooug" path="res://Audio/SoulexFish/no 4.ogg" id="24_ornx7"]
 [ext_resource type="Texture2D" uid="uid://cjdcyfxkado4k" path="res://Sprites/glock.png" id="25_bjha6"]
-[ext_resource type="AudioStream" uid="uid://cf41kos4slyh2" path="res://Audio/no 5.ogg" id="25_cnnru"]
-[ext_resource type="AudioStream" uid="uid://cm4k7jutsx01h" path="res://Audio/no 6.ogg" id="26_540hr"]
+[ext_resource type="AudioStream" uid="uid://cf41kos4slyh2" path="res://Audio/SoulexFish/no 5.ogg" id="25_cnnru"]
+[ext_resource type="AudioStream" uid="uid://cm4k7jutsx01h" path="res://Audio/SoulexFish/no 6.ogg" id="26_540hr"]
+[ext_resource type="PackedScene" uid="uid://bey5jh70myff2" path="res://Prefabs/fish_3.tscn" id="42_0xo8l"]
+[ext_resource type="Texture2D" uid="uid://dnfcug21baw2i" path="res://Sprites/crossfire.png" id="42_7mj2a"]
+[ext_resource type="AudioStream" uid="uid://crlsh0rewmybn" path="res://Audio/smartsound_WEAPONS_PISTOL_Close_Shot_02.ogg" id="42_fshgd"]
+[ext_resource type="PackedScene" uid="uid://cegbcand7wgqk" path="res://Prefabs/fish_2.tscn" id="43_xfyss"]
 
 [sub_resource type="Environment" id="Environment_7vxoj"]
 tonemap_mode = 3
@@ -76,6 +81,9 @@ initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
+size = Vector2(1528, 89)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rj586"]
 animations = [{
@@ -250,9 +258,6 @@ scale_max = 0.15
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjha6"]
 size = Vector2(400, 320)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
-size = Vector2(1528, 89)
-
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-717.0]
 
@@ -271,73 +276,6 @@ texture = ExtResource("1_wtcfe")
 amount = 20
 texture = ExtResource("2_0hol4")
 process_material = SubResource("ParticleProcessMaterial_d21ai")
-
-[node name="Fish" type="CharacterBody2D" parent="Tank" node_paths=PackedStringArray("fishSprite", "collider", "happyPlayer", "neutralPlayer", "depressedPlayer", "nopePlayer", "vacuumPlayer", "vacuumParticles", "happinessBar")]
-collision_layer = 2
-input_pickable = true
-motion_mode = 1
-script = ExtResource("5_q6r6c")
-fishSprite = NodePath("Fish")
-collider = NodePath(".")
-happyPlayer = NodePath("Fish/HappyPlayer")
-neutralPlayer = NodePath("Fish/NeutralPlayer")
-depressedPlayer = NodePath("Fish/DepressedPlayer")
-nopePlayer = NodePath("Fish/NopePlayer")
-vacuumPlayer = NodePath("Fish/VacuumPlayer")
-vacuumParticles = NodePath("Fish/Vacuum")
-happinessBar = NodePath("Fish/ProgressBar")
-
-[node name="Fish" type="AnimatedSprite2D" parent="Tank/Fish"]
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_rj586")
-animation = &"Idle"
-frame_progress = 0.575687
-
-[node name="HappyPlayer" type="AudioStreamPlayer" parent="Tank/Fish/Fish"]
-stream = SubResource("AudioStreamRandomizer_gt76g")
-
-[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Tank/Fish/Fish"]
-stream = SubResource("AudioStreamRandomizer_1fr6y")
-
-[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Tank/Fish/Fish"]
-stream = SubResource("AudioStreamRandomizer_2hxjc")
-
-[node name="NopePlayer" type="AudioStreamPlayer" parent="Tank/Fish/Fish"]
-stream = SubResource("AudioStreamRandomizer_6ip5v")
-
-[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Tank/Fish/Fish"]
-stream = ExtResource("21_2nhjh")
-
-[node name="Label" type="Label" parent="Tank/Fish/Fish"]
-offset_left = -96.0
-offset_top = -304.0
-offset_right = 96.0
-offset_bottom = -257.0
-text = "Happiness"
-label_settings = SubResource("LabelSettings_fs4d3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Tank/Fish/Fish"]
-offset_left = -192.0
-offset_top = -260.0
-offset_right = 196.0
-offset_bottom = -220.0
-theme = SubResource("Theme_gt76g")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gt76g")
-value = 100.0
-show_percentage = false
-
-[node name="Vacuum" type="GPUParticles2D" parent="Tank/Fish/Fish"]
-position = Vector2(102.065, -44.325)
-emitting = false
-amount = 20
-texture = ExtResource("2_0hol4")
-process_material = SubResource("ParticleProcessMaterial_2nhjh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank/Fish"]
-scale = Vector2(0.25, 0.25)
-shape = SubResource("RectangleShape2D_bjha6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Tank"]
 position = Vector2(0, 288)
@@ -369,6 +307,74 @@ rotation = 1.57079
 position = Vector2(-1, 34.5)
 shape = SubResource("RectangleShape2D_rj586")
 
+[node name="Fish" type="CharacterBody2D" parent="." node_paths=PackedStringArray("fishSprite", "collider", "happyPlayer", "neutralPlayer", "depressedPlayer", "nopePlayer", "vacuumPlayer", "vacuumParticles", "happinessBar")]
+collision_layer = 2
+input_pickable = true
+motion_mode = 1
+script = ExtResource("5_q6r6c")
+fishSprite = NodePath("Fish")
+collider = NodePath(".")
+happyPlayer = NodePath("Fish/HappyPlayer")
+neutralPlayer = NodePath("Fish/NeutralPlayer")
+depressedPlayer = NodePath("Fish/DepressedPlayer")
+nopePlayer = NodePath("Fish/NopePlayer")
+vacuumPlayer = NodePath("Fish/VacuumPlayer")
+vacuumParticles = NodePath("Fish/Vacuum")
+happinessBar = NodePath("Fish/ProgressBar")
+blood = ExtResource("7_lbrxf")
+
+[node name="Fish" type="AnimatedSprite2D" parent="Fish"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_rj586")
+animation = &"Idle"
+frame_progress = 0.575687
+
+[node name="HappyPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+stream = SubResource("AudioStreamRandomizer_gt76g")
+
+[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+stream = SubResource("AudioStreamRandomizer_1fr6y")
+
+[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+stream = SubResource("AudioStreamRandomizer_2hxjc")
+
+[node name="NopePlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+stream = SubResource("AudioStreamRandomizer_6ip5v")
+
+[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+stream = ExtResource("21_2nhjh")
+
+[node name="Label" type="Label" parent="Fish/Fish"]
+offset_left = -96.0
+offset_top = -304.0
+offset_right = 96.0
+offset_bottom = -257.0
+text = "Happiness"
+label_settings = SubResource("LabelSettings_fs4d3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Fish/Fish"]
+offset_left = -192.0
+offset_top = -260.0
+offset_right = 196.0
+offset_bottom = -220.0
+theme = SubResource("Theme_gt76g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gt76g")
+value = 100.0
+show_percentage = false
+
+[node name="Vacuum" type="GPUParticles2D" parent="Fish/Fish"]
+position = Vector2(102.065, -44.325)
+emitting = false
+amount = 20
+texture = ExtResource("2_0hol4")
+process_material = SubResource("ParticleProcessMaterial_2nhjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_bjha6")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 80)
 zoom = Vector2(1.23, 1.23)
@@ -378,10 +384,14 @@ stream = ExtResource("20_fs4d3")
 autoplay = true
 parameters/looping = true
 
-[node name="InteractionManager" type="Node2D" parent="." node_paths=PackedStringArray("glock")]
+[node name="InteractionManager" type="Node2D" parent="." node_paths=PackedStringArray("glock", "crosshair", "gunFirePlayer")]
 script = ExtResource("22_e8dv2")
 food = ExtResource("10_hqns4")
+helenFish = ExtResource("42_0xo8l")
+lickFish = ExtResource("43_xfyss")
 glock = NodePath("../Glock")
+crosshair = NodePath("../Crosshair")
+gunFirePlayer = NodePath("../Glock/AudioStreamPlayer")
 
 [node name="Glock" type="Sprite2D" parent="."]
 visible = false
@@ -390,10 +400,19 @@ position = Vector2(7, 269)
 scale = Vector2(4, 4)
 texture = ExtResource("25_bjha6")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Glock"]
+stream = ExtResource("42_fshgd")
+volume_db = -6.0
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("42_7mj2a")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = -282.0
+offset_left = -334.0
 offset_top = 340.0
-offset_right = 283.0
+offset_right = 335.0
 offset_bottom = 460.0
 alignment = 1
 
@@ -418,15 +437,15 @@ text = "Shrimp"
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="MermaidBtn" type="Button" parent="HBoxContainer"]
+[node name="HelenBtn" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Mermaid"
+text = "Helen Fish"
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="OtherFishBtn" type="Button" parent="HBoxContainer"]
+[node name="LickBtn" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Fish"
+text = "Lick Fish"
 icon_alignment = 1
 vertical_icon_alignment = 0
 
@@ -454,8 +473,8 @@ text = "Bomb"
 [connection signal="pressed" from="HBoxContainer/FoodBtn" to="InteractionManager" method="_on_food_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/RockBtn" to="InteractionManager" method="_on_rock_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/ShrimpBtn" to="InteractionManager" method="_on_shrimp_btn_pressed"]
-[connection signal="pressed" from="HBoxContainer/MermaidBtn" to="InteractionManager" method="_on_mermaid_btn_pressed"]
-[connection signal="pressed" from="HBoxContainer/OtherFishBtn" to="InteractionManager" method="_on_other_fish_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/HelenBtn" to="InteractionManager" method="_on_helen_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/LickBtn" to="InteractionManager" method="_on_lick_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/PlantBtn" to="InteractionManager" method="_on_plant_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/SandCastleBtn" to="InteractionManager" method="_on_sand_castle_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/GlockBtn" to="InteractionManager" method="_on_glock_btn_pressed"]

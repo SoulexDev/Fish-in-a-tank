@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://fce815u55y1x"]
+
+[ext_resource type="Texture2D" uid="uid://pojo6m6k6d8o" path="res://Sprites/redmist.png" id="1_hjxuk"]
+[ext_resource type="AudioStream" uid="uid://m854pcg5oxqw" path="res://Audio/PM_BB_DESIGNED_CINEMATIC_CHOPS_25.ogg" id="2_3cngm"]
+
+[sub_resource type="Gradient" id="Gradient_mo5p2"]
+offsets = PackedFloat32Array(0.661202, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4g75l"]
+gradient = SubResource("Gradient_mo5p2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8mwq7"]
+lifetime_randomness = 0.21
+emission_shape = 1
+emission_sphere_radius = 50.0
+spread = 0.0
+radial_velocity_min = 50.0
+radial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(1, 1, 1, 0.784314)
+color_ramp = SubResource("GradientTexture1D_4g75l")
+
+[node name="Blood" type="GPUParticles2D"]
+emitting = false
+amount = 32
+texture = ExtResource("1_hjxuk")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8mwq7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3cngm")
+volume_db = -8.0
+autoplay = true
