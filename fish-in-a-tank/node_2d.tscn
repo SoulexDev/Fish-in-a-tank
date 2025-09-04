@@ -1,7 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://bervvtcu4faek"]
+[gd_scene load_steps=70 format=3 uid="uid://bervvtcu4faek"]
 
 [ext_resource type="Texture2D" uid="uid://cfgsuefuloxm8" path="res://Sprites/BG1.png" id="1_rj586"]
 [ext_resource type="Texture2D" uid="uid://bm1o1h5xrtfmh" path="res://Sprites/fishTank.png" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://dnle2m27605vb" path="res://Scripts/Restart.cs" id="1_ytlpd"]
 [ext_resource type="Texture2D" uid="uid://dsynw5q25vxn4" path="res://Sprites/bunble.png" id="2_0hol4"]
 [ext_resource type="Texture2D" uid="uid://llrkqhcgnos0" path="res://Sprites/BG2.png" id="2_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://dniq7dlvt52ec" path="res://Sprites/BG3.png" id="3_ir8iy"]
@@ -43,9 +44,15 @@
 [ext_resource type="AudioStream" uid="uid://cf41kos4slyh2" path="res://Audio/SoulexFish/no 5.ogg" id="25_cnnru"]
 [ext_resource type="AudioStream" uid="uid://cm4k7jutsx01h" path="res://Audio/SoulexFish/no 6.ogg" id="26_540hr"]
 [ext_resource type="PackedScene" uid="uid://bey5jh70myff2" path="res://Prefabs/fish_3.tscn" id="42_0xo8l"]
+[ext_resource type="PackedScene" uid="uid://bedyoawfw6npg" path="res://Prefabs/rock.tscn" id="42_3ngjr"]
 [ext_resource type="Texture2D" uid="uid://dnfcug21baw2i" path="res://Sprites/crossfire.png" id="42_7mj2a"]
 [ext_resource type="AudioStream" uid="uid://crlsh0rewmybn" path="res://Audio/smartsound_WEAPONS_PISTOL_Close_Shot_02.ogg" id="42_fshgd"]
+[ext_resource type="PackedScene" uid="uid://b4813v5kig1pc" path="res://Prefabs/shrimp.tscn" id="42_xfyss"]
 [ext_resource type="PackedScene" uid="uid://cegbcand7wgqk" path="res://Prefabs/fish_2.tscn" id="43_xfyss"]
+[ext_resource type="PackedScene" uid="uid://cj8qf8772x5vj" path="res://Prefabs/sand_castle.tscn" id="46_cjlbh"]
+[ext_resource type="PackedScene" uid="uid://cbuiuba8782ql" path="res://Prefabs/plant.tscn" id="47_kfelt"]
+[ext_resource type="PackedScene" uid="uid://ca8lt8r4dvobq" path="res://Prefabs/bomb.tscn" id="48_ytlpd"]
+[ext_resource type="Texture2D" uid="uid://c0bmbrtwyuv7j" path="res://Sprites/restart.png" id="52_kfelt"]
 
 [sub_resource type="Environment" id="Environment_7vxoj"]
 tonemap_mode = 3
@@ -258,7 +265,11 @@ scale_max = 0.15
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjha6"]
 size = Vector2(400, 320)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cjlbh"]
+font_size = 30
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ytlpd")
 metadata/_edit_horizontal_guides_ = [-717.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -269,13 +280,15 @@ sprite_frames = SubResource("SpriteFrames_hqns4")
 autoplay = "default"
 frame_progress = 0.663633
 
-[node name="Tank" type="Sprite2D" parent="."]
-texture = ExtResource("1_wtcfe")
-
-[node name="Bubbles" type="GPUParticles2D" parent="Tank"]
+[node name="Bubbles" type="GPUParticles2D" parent="."]
+z_index = 1
 amount = 20
 texture = ExtResource("2_0hol4")
 process_material = SubResource("ParticleProcessMaterial_d21ai")
+
+[node name="Tank" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_wtcfe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Tank"]
 position = Vector2(0, 288)
@@ -308,6 +321,7 @@ position = Vector2(-1, 34.5)
 shape = SubResource("RectangleShape2D_rj586")
 
 [node name="Fish" type="CharacterBody2D" parent="." node_paths=PackedStringArray("fishSprite", "collider", "happyPlayer", "neutralPlayer", "depressedPlayer", "nopePlayer", "vacuumPlayer", "vacuumParticles", "happinessBar")]
+z_index = 2
 collision_layer = 2
 input_pickable = true
 motion_mode = 1
@@ -329,19 +343,19 @@ sprite_frames = SubResource("SpriteFrames_rj586")
 animation = &"Idle"
 frame_progress = 0.575687
 
-[node name="HappyPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+[node name="HappyPlayer" type="AudioStreamPlayer2D" parent="Fish/Fish"]
 stream = SubResource("AudioStreamRandomizer_gt76g")
 
-[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+[node name="NeutralPlayer" type="AudioStreamPlayer2D" parent="Fish/Fish"]
 stream = SubResource("AudioStreamRandomizer_1fr6y")
 
-[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+[node name="DepressedPlayer" type="AudioStreamPlayer2D" parent="Fish/Fish"]
 stream = SubResource("AudioStreamRandomizer_2hxjc")
 
-[node name="NopePlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+[node name="NopePlayer" type="AudioStreamPlayer2D" parent="Fish/Fish"]
 stream = SubResource("AudioStreamRandomizer_6ip5v")
 
-[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Fish/Fish"]
+[node name="VacuumPlayer" type="AudioStreamPlayer2D" parent="Fish/Fish"]
 stream = ExtResource("21_2nhjh")
 
 [node name="Label" type="Label" parent="Fish/Fish"]
@@ -384,17 +398,24 @@ stream = ExtResource("20_fs4d3")
 autoplay = true
 parameters/looping = true
 
-[node name="InteractionManager" type="Node2D" parent="." node_paths=PackedStringArray("glock", "crosshair", "gunFirePlayer")]
+[node name="InteractionManager" type="Node2D" parent="." node_paths=PackedStringArray("remainingCount", "glock", "crosshair", "gunFirePlayer")]
 script = ExtResource("22_e8dv2")
+remainingCount = NodePath("../Label")
 food = ExtResource("10_hqns4")
+rock = ExtResource("42_3ngjr")
+shrimp = ExtResource("42_xfyss")
 helenFish = ExtResource("42_0xo8l")
 lickFish = ExtResource("43_xfyss")
+sandCastle = ExtResource("46_cjlbh")
+plant = ExtResource("47_kfelt")
+bomb = ExtResource("48_ytlpd")
 glock = NodePath("../Glock")
 crosshair = NodePath("../Crosshair")
 gunFirePlayer = NodePath("../Glock/AudioStreamPlayer")
 
 [node name="Glock" type="Sprite2D" parent="."]
 visible = false
+z_index = 4
 texture_filter = 1
 position = Vector2(7, 269)
 scale = Vector2(4, 4)
@@ -406,10 +427,11 @@ volume_db = -6.0
 
 [node name="Crosshair" type="Sprite2D" parent="."]
 visible = false
-z_index = 1
+z_index = 4
 texture = ExtResource("42_7mj2a")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = 5
 offset_left = -334.0
 offset_top = 340.0
 offset_right = 335.0
@@ -469,6 +491,32 @@ text = "Glock"
 layout_mode = 2
 text = "Bomb"
 
+[node name="Label" type="Label" parent="."]
+offset_left = -754.0
+offset_top = 379.0
+offset_right = -355.0
+offset_bottom = 424.0
+text = "Remaining Amount: Infinite"
+label_settings = SubResource("LabelSettings_cjlbh")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 355.0
+offset_top = -330.0
+offset_right = 754.0
+offset_bottom = -285.0
+text = "Click on fish to move them"
+label_settings = SubResource("LabelSettings_cjlbh")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 481.0
+offset_top = 338.0
+offset_right = 609.0
+offset_bottom = 466.0
+texture_normal = ExtResource("52_kfelt")
+texture_pressed = ExtResource("52_kfelt")
+texture_hover = ExtResource("52_kfelt")
+stretch_mode = 4
+
 [connection signal="pressed" from="HBoxContainer/ClickerBtn" to="InteractionManager" method="_on_clicker_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/FoodBtn" to="InteractionManager" method="_on_food_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/RockBtn" to="InteractionManager" method="_on_rock_btn_pressed"]
@@ -479,3 +527,4 @@ text = "Bomb"
 [connection signal="pressed" from="HBoxContainer/SandCastleBtn" to="InteractionManager" method="_on_sand_castle_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/GlockBtn" to="InteractionManager" method="_on_glock_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/BombBtn" to="InteractionManager" method="_on_bomb_btn_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_restart_pressed"]

@@ -16,12 +16,12 @@
 [ext_resource type="AudioStream" uid="uid://caobwa34lg84q" path="res://Audio/SoulexFish/vegetable.ogg" id="13_07b21"]
 [ext_resource type="AudioStream" uid="uid://ds34fedefm3hd" path="res://Audio/SoulexFish/im depress.ogg" id="14_p4tv3"]
 [ext_resource type="AudioStream" uid="uid://b8nejdt2vkg6v" path="res://Audio/SoulexFish/end me now.ogg" id="15_j6sw0"]
-[ext_resource type="AudioStream" uid="uid://dh52grpsw3vq2" path="res://Audio/SoulexFish/no 1.ogg" id="16_7s216"]
-[ext_resource type="AudioStream" uid="uid://jgfc88irkl8r" path="res://Audio/SoulexFish/no 2.ogg" id="17_lrgor"]
-[ext_resource type="AudioStream" uid="uid://cm0ag4xs85usr" path="res://Audio/SoulexFish/no 3.ogg" id="18_hgktr"]
-[ext_resource type="AudioStream" uid="uid://b0s5uopf4ooug" path="res://Audio/SoulexFish/no 4.ogg" id="19_qmem6"]
-[ext_resource type="AudioStream" uid="uid://cf41kos4slyh2" path="res://Audio/SoulexFish/no 5.ogg" id="20_hmjyy"]
-[ext_resource type="AudioStream" uid="uid://cm4k7jutsx01h" path="res://Audio/SoulexFish/no 6.ogg" id="21_8xe01"]
+[ext_resource type="AudioStream" uid="uid://c6klrilqehek3" path="res://Audio/HelenFish/no 1_h.ogg" id="17_wevsm"]
+[ext_resource type="AudioStream" uid="uid://blweooe8eld0m" path="res://Audio/HelenFish/no 2_h.ogg" id="18_r3llh"]
+[ext_resource type="AudioStream" uid="uid://n82vfssiaa2d" path="res://Audio/HelenFish/no 3_h.ogg" id="19_d8mc8"]
+[ext_resource type="AudioStream" uid="uid://bi227mru5cand" path="res://Audio/HelenFish/no 4_h.ogg" id="20_1qm3h"]
+[ext_resource type="AudioStream" uid="uid://ba2jjk5261uuv" path="res://Audio/HelenFish/no 5_h.ogg" id="21_nmv7d"]
+[ext_resource type="AudioStream" uid="uid://sv0bf54cu4mg" path="res://Audio/HelenFish/no 6_h.ogg" id="22_0fh1t"]
 [ext_resource type="AudioStream" uid="uid://cn0qjwcx7gcxe" path="res://Audio/vacuum.ogg" id="22_hcqmi"]
 [ext_resource type="Texture2D" uid="uid://dsynw5q25vxn4" path="res://Sprites/bunble.png" id="23_d31a4"]
 
@@ -87,12 +87,12 @@ stream_4/stream = ExtResource("13_07b21")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ip5v"]
 streams_count = 6
-stream_0/stream = ExtResource("16_7s216")
-stream_1/stream = ExtResource("17_lrgor")
-stream_2/stream = ExtResource("18_hgktr")
-stream_3/stream = ExtResource("19_qmem6")
-stream_4/stream = ExtResource("20_hmjyy")
-stream_5/stream = ExtResource("21_8xe01")
+stream_0/stream = ExtResource("17_wevsm")
+stream_1/stream = ExtResource("18_r3llh")
+stream_2/stream = ExtResource("19_d8mc8")
+stream_3/stream = ExtResource("20_1qm3h")
+stream_4/stream = ExtResource("21_nmv7d")
+stream_5/stream = ExtResource("22_0fh1t")
 
 [sub_resource type="LabelSettings" id="LabelSettings_fs4d3"]
 font_size = 32
@@ -129,6 +129,7 @@ scale_max = 0.15
 size = Vector2(400, 320)
 
 [node name="Fish3" type="CharacterBody2D" node_paths=PackedStringArray("fishSprite", "collider", "happyPlayer", "neutralPlayer", "depressedPlayer", "nopePlayer", "vacuumPlayer", "vacuumParticles", "happinessBar")]
+z_index = 2
 collision_layer = 2
 input_pickable = true
 motion_mode = 1
@@ -150,19 +151,19 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_m7xe6")
 animation = &"Idle"
 
-[node name="HappyPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="HappyPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_gt76g")
 
-[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="NeutralPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_1fr6y")
 
-[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="DepressedPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_2hxjc")
 
-[node name="NopePlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="NopePlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_6ip5v")
 
-[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="VacuumPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = ExtResource("22_hcqmi")
 
 [node name="Label" type="Label" parent="Fish"]

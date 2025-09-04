@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbuiuba8782ql"]
+
+[ext_resource type="Texture2D" uid="uid://sbgl8buqvipo" path="res://Sprites/plant1.png" id="1_qg7ms"]
+[ext_resource type="Texture2D" uid="uid://dy6n4fokgd1m1" path="res://Sprites/plant2.png" id="2_ucdjb"]
+[ext_resource type="Texture2D" uid="uid://bjpjd6br7m4en" path="res://Sprites/plant3.png" id="3_uxlik"]
+[ext_resource type="Texture2D" uid="uid://p2befljtj2k" path="res://Sprites/plant4.png" id="4_ym8n5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s32dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qg7ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ucdjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uxlik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ym8n5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_037st"]
+length = 175.0
+
+[node name="Plant" type="RigidBody2D"]
+collision_layer = 2
+constant_force = Vector2(0, -700)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.66, 0.66)
+sprite_frames = SubResource("SpriteFrames_s32dh")
+autoplay = "default"
+frame_progress = 0.240433
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SeparationRayShape2D_037st")

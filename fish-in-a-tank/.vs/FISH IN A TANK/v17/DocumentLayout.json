@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\restart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\restart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\interactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\interactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\shrimp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\shrimp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|f:\\git_repos\\fish-in-a-tank\\fish-in-a-tank\\scripts\\rock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5903977-6BD0-4CB2-BEE4-441B354A5F78}|Fish in a Tank.csproj|solutionrelative:scripts\\rock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,34 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Fish.cs",
-              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Fish.cs",
-              "RelativeDocumentMoniker": "Scripts\\Fish.cs",
-              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Fish.cs",
-              "RelativeToolTip": "Scripts\\Fish.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAiwLsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2022-05-03T23:23:43.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InteractionManager.cs",
-              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\InteractionManager.cs",
-              "RelativeDocumentMoniker": "Scripts\\InteractionManager.cs",
-              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\InteractionManager.cs",
-              "RelativeToolTip": "Scripts\\InteractionManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T22:47:27.742Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -57,6 +47,84 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Restart.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Restart.cs",
+              "RelativeDocumentMoniker": "Scripts\\Restart.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Restart.cs",
+              "RelativeToolTip": "Scripts\\Restart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T22:49:19.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Rock.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Rock.cs",
+              "RelativeDocumentMoniker": "Scripts\\Rock.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Rock.cs",
+              "RelativeToolTip": "Scripts\\Rock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T22:10:50.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Bomb.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Bomb.cs",
+              "RelativeDocumentMoniker": "Scripts\\Bomb.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Bomb.cs",
+              "RelativeToolTip": "Scripts\\Bomb.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T21:49:12.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Shrimp.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Shrimp.cs",
+              "RelativeDocumentMoniker": "Scripts\\Shrimp.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Shrimp.cs",
+              "RelativeToolTip": "Scripts\\Shrimp.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwDsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T20:16:18.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Fish.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Fish.cs",
+              "RelativeDocumentMoniker": "Scripts\\Fish.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\Fish.cs",
+              "RelativeToolTip": "Scripts\\Fish.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAuwNkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T09:31:53.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InteractionManager.cs",
+              "DocumentMoniker": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\InteractionManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\InteractionManager.cs",
+              "ToolTip": "F:\\Git_Repos\\Fish-in-a-tank\\fish-in-a-tank\\Scripts\\InteractionManager.cs",
+              "RelativeToolTip": "Scripts\\InteractionManager.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowG8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T22:47:27.742Z",
+              "EditorCaption": ""
             }
           ]
         },

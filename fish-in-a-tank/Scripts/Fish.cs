@@ -34,6 +34,14 @@ public partial class Fish : CharacterBody2D
                         m_foods = InteractionManager.Instance.GetNearbyFoods(Position);
                         vacuumPlayer.Play();
                         vacuumParticles.Emitting = true;
+
+                        m_foods.ForEach(f =>
+                        {
+                            if (f is Shrimp)
+                            {
+                                (f as Shrimp).StartEat();
+                            }
+                        });
                         break;
                     case FishState.Dead:
                         GD.Print("dead as FUCK");
@@ -62,12 +70,12 @@ public partial class Fish : CharacterBody2D
     [Export] public AnimatedSprite2D fishSprite;
     [Export] public CollisionObject2D collider;
 
-    [Export] public AudioStreamPlayer happyPlayer;
-    [Export] public AudioStreamPlayer neutralPlayer;
-    [Export] public AudioStreamPlayer depressedPlayer;
-    [Export] public AudioStreamPlayer nopePlayer;
+    [Export] public AudioStreamPlayer2D happyPlayer;
+    [Export] public AudioStreamPlayer2D neutralPlayer;
+    [Export] public AudioStreamPlayer2D depressedPlayer;
+    [Export] public AudioStreamPlayer2D nopePlayer;
 
-    [Export] public AudioStreamPlayer vacuumPlayer;
+    [Export] public AudioStreamPlayer2D vacuumPlayer;
 
     [Export] public GpuParticles2D vacuumParticles;
 
@@ -169,6 +177,13 @@ public partial class Fish : CharacterBody2D
 
         m_happiness -= (float)delta * 0.5f;
         m_age += (float)delta * 0.1f;
+
+        StaticBody2D bomb = InteractionManager.Instance.GetNearbyBomb(Position);
+        if (bomb != null)
+        {
+            (bomb as Bomb).Explode();
+            ExplodeFish(true);
+        }
     }
     private void OnPlayerFinished()
     {
@@ -179,19 +194,34 @@ public partial class Fish : CharacterBody2D
             m_speakingWatch.Restart();
             m_speakingInterval = m_rand.Next(10, 40);
         }
+        if (m_currentState == FishState.Eating)
+        {
+            if (m_foods.Count > 0)
+            {
+                m_foods.ForEach(f =>
+                {
+                    if (f is Shrimp)
+                    {
+                        (f as Shrimp).EndEat();
+                    }
+                });
+            }
+        }
 
         m_currentState = FishState.Idle;
         vacuumParticles.Emitting = false;
     }
-    public void ExplodeFish()
+    public void ExplodeFish(bool vanish = false)
     {
         GpuParticles2D newBlood = (GpuParticles2D)GD.Load<PackedScene>(blood.ResourcePath).Instantiate();
         GetParent().AddChild(newBlood);
-        newBlood.Position = GetGlobalMousePosition();
+        newBlood.Position = Position;
         newBlood.Emitting = true;
 
-        m_currentState = FishState.Dead;
-        //QueueFree();
+        if (vanish)
+            QueueFree();
+        else
+            m_currentState = FishState.Dead;
     }
     public void DoIdle(double delta)
     {
@@ -239,7 +269,11 @@ public partial class Fish : CharacterBody2D
                 if (f.Position.DistanceTo(Position) <= 65)
                 {
                     m_foods.Remove(f);
-                    InteractionManager.Instance.RemoveFood(f);
+
+                    if (f is Shrimp)
+                        InteractionManager.Instance.RemoveShrimp(f);
+                    else
+                        InteractionManager.Instance.RemoveFood(f);
 
                     m_foodEaten++;
 

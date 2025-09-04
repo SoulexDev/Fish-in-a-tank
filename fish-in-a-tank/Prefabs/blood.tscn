@@ -14,6 +14,8 @@ gradient = SubResource("Gradient_mo5p2")
 lifetime_randomness = 0.21
 emission_shape = 1
 emission_sphere_radius = 50.0
+angle_min = -360.0
+angle_max = 360.0
 spread = 0.0
 radial_velocity_min = 50.0
 radial_velocity_max = 150.0
@@ -24,6 +26,7 @@ color = Color(1, 1, 1, 0.784314)
 color_ramp = SubResource("GradientTexture1D_4g75l")
 
 [node name="Blood" type="GPUParticles2D"]
+z_index = 3
 emitting = false
 amount = 32
 texture = ExtResource("1_hjxuk")
@@ -31,7 +34,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_8mwq7")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_3cngm")
 volume_db = -8.0
 autoplay = true
