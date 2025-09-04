@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class InteractionManager : Node2D
@@ -7,6 +6,8 @@ public partial class InteractionManager : Node2D
     public static InteractionManager Instance;
     public enum Item { Clicker, Food, Rock, Shrimp, HelenFish, LickFish, Glock, SandCastle, Plant, Bomb }
     public Item selectedItem = Item.Clicker;
+
+    [Export] public Label remainingCount;
 
     [Export] public PackedScene food;
     [Export] public PackedScene rock;
@@ -23,6 +24,8 @@ public partial class InteractionManager : Node2D
     [Export] public AudioStreamPlayer gunFirePlayer;
 
     private List<RigidBody2D> foods = new List<RigidBody2D>();
+    private List<StaticBody2D> bombs = new List<StaticBody2D>();
+
     private Vector2 glockPos;
 
     public Dictionary<Item, int> remainingValues = new Dictionary<Item, int>
@@ -57,8 +60,10 @@ public partial class InteractionManager : Node2D
                     OnFoodClick();
                     break;
                 case Item.Rock:
+                    OnRockClick();
                     break;
                 case Item.Shrimp:
+                    OnShrimpClick();
                     break;
                 case Item.HelenFish:
                     OnHelenClick();
@@ -67,13 +72,16 @@ public partial class InteractionManager : Node2D
                     OnLickClick();
                     break;
                 case Item.SandCastle:
+                    OnSandCastleClick();
                     break;
                 case Item.Plant:
+                    OnPlantClick();
                     break;
                 case Item.Glock:
                     OnGlockClick();
                     break;
                 case Item.Bomb:
+                    OnBombClick();
                     break;
                 default:
                     break;
@@ -92,6 +100,14 @@ public partial class InteractionManager : Node2D
         glock.Position = glockPos;
 
         crosshair.Position = GetGlobalMousePosition();
+
+        remainingCount.Text = "Remaining Amount: " + selectedItem switch
+        {
+            Item.Clicker => "Infinite",
+            Item.Food => "Infinite",
+            Item.Glock => "Infinite",
+            _ => remainingValues[selectedItem]
+        };
     }
     public void SelectItem(Item item)
     {
@@ -137,7 +153,7 @@ public partial class InteractionManager : Node2D
         foods.Add((RigidBody2D)newFood);
 
         Vector2 spawnPos = GetGlobalMousePosition();
-        spawnPos.X = Mathf.Clamp(spawnPos.X, -700, 700);
+        spawnPos.X = Mathf.Clamp(spawnPos.X, -650, 650);
         spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 300);
 
         ((RigidBody2D)newFood).Position = spawnPos;
@@ -146,15 +162,14 @@ public partial class InteractionManager : Node2D
     {
         if (remainingValues[Item.Rock] <= 0)
         {
-
             return;
         }
         var newRock = GD.Load<PackedScene>(rock.ResourcePath).Instantiate();
         AddChild(newRock);
 
         Vector2 spawnPos = GetGlobalMousePosition();
-        spawnPos.X = Mathf.Clamp(spawnPos.X, -700, 700);
-        spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 340);
+        spawnPos.X = Mathf.Clamp(spawnPos.X, -500, 500);
+        spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 200);
 
         ((RigidBody2D)newRock).Position = spawnPos;
 
@@ -168,7 +183,6 @@ public partial class InteractionManager : Node2D
     {
         if (remainingValues[Item.HelenFish] <= 0)
         {
-
             return;
         }
         var newFish = GD.Load<PackedScene>(helenFish.ResourcePath).Instantiate();
@@ -186,7 +200,6 @@ public partial class InteractionManager : Node2D
     {
         if (remainingValues[Item.LickFish] <= 0)
         {
-
             return;
         }
         var newFish = GD.Load<PackedScene>(lickFish.ResourcePath).Instantiate();
@@ -199,6 +212,78 @@ public partial class InteractionManager : Node2D
         ((CharacterBody2D)newFish).Position = spawnPos;
 
         remainingValues[Item.LickFish]--;
+    }
+    void OnShrimpClick()
+    {
+        if (remainingValues[Item.Shrimp] <= 0)
+        {
+            return;
+        }
+        var newFish = GD.Load<PackedScene>(shrimp.ResourcePath).Instantiate();
+        AddChild(newFish);
+
+        foods.Add((RigidBody2D)newFish);
+
+        Vector2 spawnPos = GetGlobalMousePosition();
+        spawnPos.X = Mathf.Clamp(spawnPos.X, -600, 600);
+        spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 200);
+
+        ((RigidBody2D)newFish).Position = spawnPos;
+
+        remainingValues[Item.Shrimp]--;
+    }
+    void OnSandCastleClick()
+    {
+        if (remainingValues[Item.SandCastle] <= 0)
+        {
+            return;
+        }
+        var newCastle = GD.Load<PackedScene>(sandCastle.ResourcePath).Instantiate();
+        AddChild(newCastle);
+
+        Vector2 spawnPos = GetGlobalMousePosition();
+        spawnPos.X = Mathf.Clamp(spawnPos.X, -500, 500);
+        spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 200);
+
+        ((RigidBody2D)newCastle).Position = spawnPos;
+
+        remainingValues[Item.SandCastle]--;
+    }
+    void OnPlantClick()
+    {
+        if (remainingValues[Item.Plant] <= 0)
+        {
+            return;
+        }
+        var newPlant = GD.Load<PackedScene>(plant.ResourcePath).Instantiate();
+        AddChild(newPlant);
+
+        Vector2 spawnPos = GetGlobalMousePosition();
+        spawnPos.X = Mathf.Clamp(spawnPos.X, -650, 650);
+        spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 200);
+
+        ((RigidBody2D)newPlant).Position = spawnPos;
+
+        remainingValues[Item.Plant]--;
+    }
+    void OnBombClick()
+    {
+        if (remainingValues[Item.Bomb] <= 0)
+        {
+            return;
+        }
+        var newBomb = GD.Load<PackedScene>(bomb.ResourcePath).Instantiate();
+        AddChild(newBomb);
+
+        bombs.Add((StaticBody2D)newBomb);
+
+        Vector2 spawnPos = GetGlobalMousePosition();
+        spawnPos.X = Mathf.Clamp(spawnPos.X, -650, 650);
+        spawnPos.Y = Mathf.Clamp(spawnPos.Y, -200, 250);
+
+        ((StaticBody2D)newBomb).Position = spawnPos;
+
+        remainingValues[Item.Bomb]--;
     }
     public List<RigidBody2D> GetNearbyFoods(Vector2 position)
     {
@@ -224,6 +309,17 @@ public partial class InteractionManager : Node2D
         }
         return false;
     }
+    public StaticBody2D GetNearbyBomb(Vector2 position)
+    {
+        foreach (var b in bombs)
+        {
+            if (position.DistanceSquaredTo(b.Position) < 100 * 100)
+            {
+                return b;
+            }
+        }
+        return null;
+    }
     public void RemoveFood(RigidBody2D foodToRemove)
     {
         foods.Remove(foodToRemove);
@@ -231,6 +327,7 @@ public partial class InteractionManager : Node2D
     }
     public void RemoveBomb(StaticBody2D bombToRemove)
     {
+        bombs.Remove(bombToRemove);
         bombToRemove.QueueFree();
 
         remainingValues[Item.Bomb]++;

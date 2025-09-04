@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca8lt8r4dvobq"]
+
+[ext_resource type="Script" uid="uid://5j8e2jk8wy0s" path="res://Scripts/Bomb.cs" id="1_mdn6m"]
+[ext_resource type="Texture2D" uid="uid://bk1giqgnra0mi" path="res://Sprites/bom.png" id="1_uj8qr"]
+[ext_resource type="PackedScene" uid="uid://bt0gp1uioa27" path="res://Prefabs/explosion.tscn" id="2_q1ecd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qosj"]
+radius = 50.3587
+
+[node name="Bomb" type="StaticBody2D" node_paths=PackedStringArray("collider")]
+z_index = 1
+input_pickable = true
+script = ExtResource("1_mdn6m")
+explosionParticles = ExtResource("2_q1ecd")
+collider = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_uj8qr")
+offset = Vector2(42.34, -27.95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4qosj")

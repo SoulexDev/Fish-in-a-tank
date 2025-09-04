@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4813v5kig1pc"]
+
+[ext_resource type="Script" uid="uid://bkpxg3y2yuxnd" path="res://Scripts/Shrimp.cs" id="1_teqp3"]
+[ext_resource type="PackedScene" uid="uid://fce815u55y1x" path="res://Prefabs/blood.tscn" id="2_36x5o"]
+[ext_resource type="Texture2D" uid="uid://bx784w580t7ne" path="res://Sprites/scrimp.png" id="2_hirl3"]
+[ext_resource type="AudioStream" uid="uid://cl0yh3rm2w37q" path="res://Audio/Shrimp/Chirp1.ogg" id="3_36x5o"]
+[ext_resource type="AudioStream" uid="uid://bwtv1ris78lu2" path="res://Audio/Shrimp/Chirp2.ogg" id="4_as467"]
+[ext_resource type="AudioStream" uid="uid://d8wotg4qlisa" path="res://Audio/Shrimp/Chirp3.ogg" id="5_rxibk"]
+[ext_resource type="AudioStream" uid="uid://c7b887mxg0ids" path="res://Audio/Shrimp/Chirp4.ogg" id="6_cr6xt"]
+[ext_resource type="AudioStream" uid="uid://cuo28pepagl7j" path="res://Audio/Shrimp/Chirp5.ogg" id="7_nacgd"]
+[ext_resource type="AudioStream" uid="uid://mxvxdu8qukia" path="res://Audio/Shrimp/Scream.ogg" id="8_3wjqa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qilgh"]
+radius = 41.1096
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_whnp6"]
+streams_count = 5
+stream_0/stream = ExtResource("3_36x5o")
+stream_1/stream = ExtResource("4_as467")
+stream_2/stream = ExtResource("5_rxibk")
+stream_3/stream = ExtResource("6_cr6xt")
+stream_4/stream = ExtResource("7_nacgd")
+stream_4/weight = 0.2
+
+[node name="Shrimp" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collider", "audioPlayer", "screamPlayer")]
+z_index = 2
+collision_layer = 2
+input_pickable = true
+lock_rotation = true
+constant_force = Vector2(0, -900)
+script = ExtResource("1_teqp3")
+sprite = NodePath("Shrimp")
+collider = NodePath(".")
+audioPlayer = NodePath("ChirpPlayer")
+screamPlayer = NodePath("ScreamPlayer")
+blood = ExtResource("2_36x5o")
+
+[node name="Shrimp" type="Sprite2D" parent="."]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_hirl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qilgh")
+
+[node name="ChirpPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_whnp6")
+
+[node name="ScreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_3wjqa")
+volume_db = -10.0

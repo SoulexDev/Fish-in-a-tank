@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj8qf8772x5vj"]
+
+[ext_resource type="Texture2D" uid="uid://c8n66nifjt3jj" path="res://Sprites/castle.png" id="1_x0qb2"]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_x0qb2"]
+length = 76.0
+
+[node name="SandCastle" type="RigidBody2D"]
+z_index = -1
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_x0qb2")
+offset = Vector2(149.11, -5.18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 62)
+shape = SubResource("SeparationRayShape2D_x0qb2")

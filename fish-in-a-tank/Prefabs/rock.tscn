@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bedyoawfw6npg"]
+
+[ext_resource type="Texture2D" uid="uid://3k8txwk8ghll" path="res://Sprites/rock.png" id="1_42w03"]
+[ext_resource type="Script" uid="uid://igj37xwo55qh" path="res://Scripts/Rock.cs" id="2_nf3cl"]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_42w03"]
+length = 91.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42w03"]
+size = Vector2(300, 50)
+
+[node name="Rock" type="RigidBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_42w03")
+offset = Vector2(0, -118.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13.5, -22)
+shape = SubResource("SeparationRayShape2D_42w03")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." node_paths=PackedStringArray("rigidBody")]
+visible = false
+z_index = 1
+position = Vector2(0, 58)
+shape = SubResource("RectangleShape2D_42w03")
+target_position = Vector2(0, 20)
+max_results = 8
+collision_mask = 0
+script = ExtResource("2_nf3cl")
+rigidBody = NodePath("..")

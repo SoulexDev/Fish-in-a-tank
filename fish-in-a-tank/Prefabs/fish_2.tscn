@@ -129,6 +129,7 @@ scale_max = 0.15
 size = Vector2(400, 320)
 
 [node name="Fish2" type="CharacterBody2D" node_paths=PackedStringArray("fishSprite", "collider", "happyPlayer", "neutralPlayer", "depressedPlayer", "nopePlayer", "vacuumPlayer", "vacuumParticles", "happinessBar")]
+z_index = 2
 collision_layer = 2
 input_pickable = true
 motion_mode = 1
@@ -150,19 +151,19 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_22e24")
 animation = &"Idle"
 
-[node name="HappyPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="HappyPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_gt76g")
 
-[node name="NeutralPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="NeutralPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_1fr6y")
 
-[node name="DepressedPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="DepressedPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_2hxjc")
 
-[node name="NopePlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="NopePlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = SubResource("AudioStreamRandomizer_6ip5v")
 
-[node name="VacuumPlayer" type="AudioStreamPlayer" parent="Fish"]
+[node name="VacuumPlayer" type="AudioStreamPlayer2D" parent="Fish"]
 stream = ExtResource("22_fksqk")
 
 [node name="Label" type="Label" parent="Fish"]

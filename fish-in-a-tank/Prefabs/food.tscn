@@ -11,6 +11,7 @@ bounce = 0.2
 radius = 20.3961
 
 [node name="Food" type="RigidBody2D"]
+z_index = 2
 physics_material_override = SubResource("PhysicsMaterial_qc5lh")
 constant_force = Vector2(0, -1000)
 
