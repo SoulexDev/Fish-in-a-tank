@@ -312,7 +312,6 @@ collision_layer = 2
 input_pickable = true
 motion_mode = 1
 script = ExtResource("5_q6r6c")
-blood = ExtResource("7_lbrxf")
 fishSprite = NodePath("Fish")
 collider = NodePath(".")
 happyPlayer = NodePath("Fish/HappyPlayer")
@@ -322,6 +321,7 @@ nopePlayer = NodePath("Fish/NopePlayer")
 vacuumPlayer = NodePath("Fish/VacuumPlayer")
 vacuumParticles = NodePath("Fish/Vacuum")
 happinessBar = NodePath("Fish/ProgressBar")
+blood = ExtResource("7_lbrxf")
 
 [node name="Fish" type="AnimatedSprite2D" parent="Fish"]
 scale = Vector2(0.25, 0.25)
