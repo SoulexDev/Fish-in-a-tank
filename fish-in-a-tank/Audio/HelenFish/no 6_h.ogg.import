@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://sv0bf54cu4mg"
+path="res://.godot/imported/no 6_h.ogg-b9b5900b78a8160fc587aa0a9ce0196a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/HelenFish/no 6_h.ogg"
+dest_files=["res://.godot/imported/no 6_h.ogg-b9b5900b78a8160fc587aa0a9ce0196a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
