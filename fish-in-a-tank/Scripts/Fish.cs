@@ -93,7 +93,7 @@ public partial class Fish : CharacterBody2D
         get { return _m_happiness; }
         set
         {
-            _m_happiness = Mathf.Clamp(value, 0, 100);
+            _m_happiness = Mathf.Clamp(value, 0, 100 - m_age);
             happinessBar.Value = m_happiness;
         }
     }
@@ -177,6 +177,10 @@ public partial class Fish : CharacterBody2D
 
         m_happiness -= (float)delta * 0.5f;
         m_age += (float)delta * 0.1f;
+        m_age = Mathf.Clamp(m_age, 0, 90);
+
+        if (m_age >= 90)
+            m_currentState = FishState.Dead;
 
         StaticBody2D bomb = InteractionManager.Instance.GetNearbyBomb(Position);
         if (bomb != null)
